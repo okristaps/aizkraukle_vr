@@ -27,48 +27,111 @@ COMPLETED STEPS
 
     1.4 XR Interaction Toolkit Samples Imported
         - Starter Assets
-        - XR Device Simulator
+        - XR Device Simulator (removed from scene - conflicts with Quest tracking)
 
     1.5 Android Modules Installed (via Unity Hub)
         - Android SDK & NDK Tools
         - OpenJDK
 
+[x] Step 2: XR Rig Setup (Completed)
+
+    2.1 TourScene created (Assets/Scenes/TourScene.unity)
+
+    2.2 XR Origin (VR) added
+        - Right-click Hierarchy → XR → XR Origin (VR)
+        - Position: (0, 0, 0)
+        - Tracking Origin Mode: Floor
+
+    2.3 Main Camera settings (XR Origin → Camera Offset → Main Camera)
+        - Tracked Pose Driver: Rotation And Position
+        - Clear Flags: Skybox (or Environment)
+        - DO NOT add Skybox component to camera (causes issues)
+
+    2.4 Walking Platform
+        - Plane at (0, 0, 0), Scale (0.2, 1, 0.2) = 2x2m
+        - Mesh Renderer disabled (invisible, collider only)
+
+[x] Step 3: 360 Panorama System (Completed)
+
+    IMPORTANT: Use Skybox approach, NOT sphere!
+
+    3.1 Created SkyboxPanorama material (Assets/Materials/)
+        - Shader: Skybox → Panoramic
+        - Mapping: Latitude Longitude Layout
+        - Assign 360 image to "Spherical (HDR)" texture slot
+        - Adjust Rotation if view is inverted (try 180)
+
+    3.2 Set as Scene Skybox (NOT camera component!)
+        - Window → Rendering → Lighting
+        - Environment tab → Skybox Material → SkyboxPanorama
+
+    3.3 Image Quality Settings
+        - Select all 360 images in Assets/GameAssets/Images/
+        - Max Size: 4096 or 8192
+        - Compression: None or High Quality
+        - Generate Mip Maps: Unchecked
+        - Click Apply
+
+    FAILED APPROACHES (do not use):
+    - Sphere with FlipNormals script - unreliable
+    - Custom Panorama360 shader - UV issues
+    - Skybox component on camera - causes conflicts
+
 PENDING STEPS
 -------------
 
-[ ] Step 2: Scene Structure
-    - Create MainMenuScene (title + Sakt/Par/Iziet buttons)
-    - Create TourScene (360 panorama viewer)
-
-[ ] Step 3: XR Rig Setup
-    - Configure XR Origin for room-scale VR
-    - Create 2x2m transparent floor platform
-    - Enable tracked device position/rotation
-
-[ ] Step 4: 360 Panorama System
-    - Create inverted sphere for 360 images
-    - Script to load/swap between 30 JPG images
-    - Equirectangular projection material
+[ ] Step 4: PanoramaManager Script
+    - Script to swap skybox textures between 30 images
+    - Load images dynamically
 
 [ ] Step 5: UI System (World Space Canvas)
-    - Main Menu: Title + 3 buttons (Sakt, Par, Iziet)
+    - Main Menu Scene: Title + 3 buttons (Sakt, Par, Iziet)
     - About Panel: Logo + project info, back button
     - Tour UI: Language buttons (LV, EN, LT), info panel, navigation
 
 [ ] Step 6: Scripts
-    - PanoramaManager.cs
-    - MenuController.cs
-    - LanguageManager.cs
-    - TourUIController.cs
+    - PanoramaManager.cs - swap between panoramas
+    - MenuController.cs - main menu logic
+    - LanguageManager.cs - language selection
+    - TourUIController.cs - navigation between locations
 
 [ ] Step 7: Build & Deploy
     - Configure app icon, splash screen
     - Build APK for Quest
     - Test on device
 
+CURRENT SCENE HIERARCHY (TourScene)
+-----------------------------------
+
+- Directional Light
+- XR Origin (VR)
+  └── Camera Offset
+      └── Main Camera
+- WalkingPlatform
+
 ASSETS STRUCTURE
 ----------------
 
-Assets/GameAssets/Images/         - 30 panoramic 360 JPG images
-Assets/GameAssets/InfoImages/     - 90 info images (30 locations x 3 languages)
-                                    Naming: X-1.png (LV), X-2.png (EN), X-3.png (LT)
+Assets/
+├── GameAssets/
+│   ├── Images/           - 30 panoramic 360 JPG images
+│   └── InfoImages/       - 90 info images (30 locations x 3 languages)
+│                           Naming: X-1.png (LV), X-2.png (EN), X-3.png (LT)
+├── Materials/
+│   ├── SkyboxPanorama.mat   - Main panorama material (Skybox/Panoramic shader)
+│   ├── PanoramaMaterial.mat - (unused, can delete)
+│   └── PanoramaShader.shader - (unused, can delete)
+├── Scenes/
+│   └── TourScene.unity
+└── Scripts/
+    └── FlipNormals.cs    - (unused, can delete)
+
+QUEST DEVELOPER SETUP
+---------------------
+
+1. Create developer account at developer.oculus.com
+2. Enable Developer Mode via Meta phone app:
+   - Menu → Devices → select Quest → Headset Settings → Developer Mode → ON
+3. Restart Quest
+4. Connect USB, allow debugging when prompted
+5. In Unity: File → Build Profiles → select Quest in Run Device → Build and Run

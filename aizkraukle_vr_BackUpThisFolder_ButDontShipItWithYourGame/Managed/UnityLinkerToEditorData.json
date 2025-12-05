@@ -393,6 +393,14 @@
             "icon": null
           },
           {
+            "name": "Skybox",
+            "scenes": [
+              "Assets/Scenes/TourScene.unity"
+            ],
+            "dependencyType": 0,
+            "icon": null
+          },
+          {
             "name": "SortingGroup",
             "scenes": [],
             "dependencyType": 0,
@@ -923,9 +931,7 @@
           },
           {
             "name": "SphereCollider",
-            "scenes": [
-              "Assets/Scenes/TourScene.unity"
-            ],
+            "scenes": [],
             "dependencyType": 0,
             "icon": null
           },
@@ -1338,9 +1344,7 @@
           },
           {
             "name": "CanvasGroup",
-            "scenes": [
-              "Assets/Scenes/TourScene.unity"
-            ],
+            "scenes": [],
             "dependencyType": 0,
             "icon": null
           },

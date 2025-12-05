@@ -7,7 +7,7 @@ Shader "Custom/Panorama360"
     SubShader
     {
         Tags { "RenderType"="Opaque" }
-        Cull Front  // Render inside faces only
+        Cull Front
 
         Pass
         {
@@ -20,30 +20,34 @@ Shader "Custom/Panorama360"
             struct appdata
             {
                 float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
+                float3 normal : NORMAL;
             };
 
             struct v2f
             {
-                float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                float3 viewDir : TEXCOORD0;
             };
 
             sampler2D _MainTex;
-            float4 _MainTex_ST;
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                // Flip UVs horizontally for correct orientation
-                o.uv = float2(1 - v.uv.x, v.uv.y);
+                o.viewDir = v.vertex.xyz;
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
+                float3 dir = normalize(i.viewDir);
+
+                // Convert direction to equirectangular UV
+                float u = 0.5 + atan2(dir.z, dir.x) / (2.0 * 3.14159265);
+                float v = 0.5 + asin(dir.y) / 3.14159265;
+
+                fixed4 col = tex2D(_MainTex, float2(u, v));
                 return col;
             }
             ENDCG
