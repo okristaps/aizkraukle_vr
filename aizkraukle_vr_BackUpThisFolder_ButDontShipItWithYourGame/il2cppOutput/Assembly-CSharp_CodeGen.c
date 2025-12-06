@@ -9,17 +9,53 @@
 
 extern void FlipNormals_Start_m141858E6DC79D5B63A5D3AA0DFE401D76463B587 (void);
 extern void FlipNormals__ctor_m2B7F393904C43C99A4C3266D35A2BA6A0AC037FB (void);
+extern void ForceFloorTracking_Start_mF10F673F9105AD5DEDE41C94D175BCC19AA8E6F8 (void);
+extern void ForceFloorTracking_SetupTracking_mEC9F1376ED6AE12AB9824427D44249F3C860CBA9 (void);
+extern void ForceFloorTracking__ctor_m18A084ED26177061E0A18D6A3D3A6CA2BBB06392 (void);
+extern void U3CSetupTrackingU3Ed__1__ctor_m059AB9DAB56607E5E9196B9AAE6D7ADA404272D6 (void);
+extern void U3CSetupTrackingU3Ed__1_System_IDisposable_Dispose_mA6737EF4395D9185B271558C968BF4BE85D22544 (void);
+extern void U3CSetupTrackingU3Ed__1_MoveNext_mD3585C78D5C9BA0475E2DB5AE0507544F787972A (void);
+extern void U3CSetupTrackingU3Ed__1_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mB609C9F98E7279F3E6BBD33E1F3F53827872F722 (void);
+extern void U3CSetupTrackingU3Ed__1_System_Collections_IEnumerator_Reset_mCDB78F5D5A1D9924A74B93A7B6810D95DABAF53B (void);
+extern void U3CSetupTrackingU3Ed__1_System_Collections_IEnumerator_get_Current_m5316FFF31FE81576E4977AFA08FEC61AB1F5EB65 (void);
+extern void TrackingDebug_Start_m5C2DD2C5E7F5F0DC850D1EA6661C473CB4662EB1 (void);
+extern void TrackingDebug_Update_mC9121C1C55ED2108A4C4C48D50E93A61230B824A (void);
+extern void TrackingDebug__ctor_m93B6402F96500EF6B2D5CFAA4ED79E0AE5165680 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[4] = 
+static Il2CppMethodPointer s_methodPointers[16] = 
 {
 	FlipNormals_Start_m141858E6DC79D5B63A5D3AA0DFE401D76463B587,
 	FlipNormals__ctor_m2B7F393904C43C99A4C3266D35A2BA6A0AC037FB,
+	ForceFloorTracking_Start_mF10F673F9105AD5DEDE41C94D175BCC19AA8E6F8,
+	ForceFloorTracking_SetupTracking_mEC9F1376ED6AE12AB9824427D44249F3C860CBA9,
+	ForceFloorTracking__ctor_m18A084ED26177061E0A18D6A3D3A6CA2BBB06392,
+	U3CSetupTrackingU3Ed__1__ctor_m059AB9DAB56607E5E9196B9AAE6D7ADA404272D6,
+	U3CSetupTrackingU3Ed__1_System_IDisposable_Dispose_mA6737EF4395D9185B271558C968BF4BE85D22544,
+	U3CSetupTrackingU3Ed__1_MoveNext_mD3585C78D5C9BA0475E2DB5AE0507544F787972A,
+	U3CSetupTrackingU3Ed__1_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mB609C9F98E7279F3E6BBD33E1F3F53827872F722,
+	U3CSetupTrackingU3Ed__1_System_Collections_IEnumerator_Reset_mCDB78F5D5A1D9924A74B93A7B6810D95DABAF53B,
+	U3CSetupTrackingU3Ed__1_System_Collections_IEnumerator_get_Current_m5316FFF31FE81576E4977AFA08FEC61AB1F5EB65,
+	TrackingDebug_Start_m5C2DD2C5E7F5F0DC850D1EA6661C473CB4662EB1,
+	TrackingDebug_Update_mC9121C1C55ED2108A4C4C48D50E93A61230B824A,
+	TrackingDebug__ctor_m93B6402F96500EF6B2D5CFAA4ED79E0AE5165680,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[4] = 
+static const int32_t s_InvokerIndices[16] = 
 {
+	12378,
+	12378,
+	12378,
+	12192,
+	12378,
+	9530,
+	12378,
+	12023,
+	12192,
+	12378,
+	12192,
+	12378,
 	12378,
 	12378,
 	21126,
@@ -29,7 +65,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	4,
+	16,
 	s_methodPointers,
 	0,
 	NULL,
